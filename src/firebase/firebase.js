@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-const config = {
+export const config = {
     apiKey: "AIzaSyAmKxyOdIW3U3_mG-se-5MQFlaLT2lhTxI",
     authDomain: "bright-n-beautiful-bath-bombs.firebaseapp.com",
     projectId: "bright-n-beautiful-bath-bombs",

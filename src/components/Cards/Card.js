@@ -1,39 +1,38 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import { Typography } from "@material-ui/core";
-import withStyles from "@material-ui/core/styles/withStyles";
+import styled from "styled-components";
 
-const styles = {
-  main: {
-    height: "100%",
-    padding: "0%",
-  },
-  content: {
-    padding: "0%",
-  },
-  header: {
-    backgroundColor: "#F2A0B6",
-    width: "100%",
-    height: "150px",
-  },
-  icon: {
-    height: "25px",
-  },
-};
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  height: 100%;
+`;
 
-const IntroCard = ({ title, icon, text, classes }) => {
+const Header = styled.div`
+  background-color: var(--color-main);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+`;
+
+const Text = styled.div`
+  padding: 1rem;
+`
+
+const IntroCard = ({ title, icon, text }) => {
   return (
-    <Card className={classes.main}>
-      <CardContent className={classes.content}>
-        <div className={classes.header}>
-          <div className={classes.icon}> {icon}</div>
-          <Typography variant="h4">{title}</Typography>
-        </div>
-        <Typography variant="body1">{text}</Typography>
-      </CardContent>
-    </Card>
+    <Main>
+      <Header>
+        {icon}
+        <h4>{title}</h4>
+      </Header>
+      <Text>{text}</Text>
+    </Main>
   );
 };
 
-export default withStyles(styles)(IntroCard);
+export default IntroCard;

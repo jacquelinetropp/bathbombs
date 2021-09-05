@@ -1,63 +1,89 @@
-import React from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import logo from '../../images/logo .png';
+import React, { Fragment, useState } from "react";
+import logo from "../../images/logo .png";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import { StyledLink } from "../styles";
+import { connect } from "react-redux";
 
-const styles = {
-  appbar: {
-    backgroundColor: "transparent",
-    height: "6rem",
-  },
-   navbar: {
-       display: "flex",
-       justifyContent: "space-between",
-       alignContent: "center",
-       height: "100%",
-   },
-  links: {
-    textDecoration: "none",
-    padding: "1rem",
-    borderRadius: "10px",
-    "&:hover": {
-      backgroundColor: "#e3b3be"
-    }
-  },
-  logo: {
-    height: "60px"
-  }
-};
+import styled from "styled-components";
 
-const Navbar = ({ classes }) => {
+const NavbarDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  padding: 2rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+`;
+
+const Logo = styled.img`
+  height: 30px;
+`;
+
+const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+`;
+
+const User = styled.div`
+  position: absolute;
+  top: 6%;
+  right: 5%;
+  z-index: 10;
+  display: flex;
+  clip-path: polygon(0 25%, 0 100%, 100% 100%, 100% 26%, 69% 25%, 49% 1%, 33% 22%);
+  background-color: purple;
+`;
+
+const Navbar = () => {
+  const [show, setShow] = useState(false);
+  console.log(show);
   return (
-    <AppBar elevation={0} className={classes.appbar}>
-      <Toolbar className={classes.navbar}>
-        <Link to="/" className={classes.links}>
-          <Typography color="textPrimary" variant="h5">
-            Home
-          </Typography>
-        </Link>
-        <Link to="/about" className={classes.links}>
-          <Typography color="textPrimary" variant="h5">
-            About
-          </Typography>
-        </Link>
-        <Link to="/" className={classes.links}>
-          <img src={logo} alt="Logo" className={classes.logo} />
-        </Link>
-        <Link to="/shop" className={classes.links}>
-          <Typography color="textPrimary" variant="h5">
-           Shop
-          </Typography>
-        </Link>
-        <Link to="/checkout" className={classes.links}>
-          <Typography color="textPrimary" variant="h5">
-           Checkout
-          </Typography>
-        </Link>
-      </Toolbar>
-    </AppBar>
+    <Fragment>
+      <NavbarDiv>
+        <StyledLink to="/">
+          <h4>Home</h4>
+        </StyledLink>
+        <StyledLink to="/about">
+          <h4>About</h4>
+        </StyledLink>
+        <StyledLink to="/">
+          <Logo src={logo} alt="Logo" />
+        </StyledLink>
+        <StyledLink to="/shop">
+          <h4>Shop</h4>
+        </StyledLink>
+        <Icons>
+          <StyledLink to="/checkout">
+            <h4>
+              <ShoppingCartIcon />
+            </h4>
+          </StyledLink>
+
+          <h4>
+            <AccountBoxIcon onClick={() => setShow(true)} />
+          </h4>
+        </Icons>
+      </NavbarDiv>
+
+      {show ? (
+        <User>
+          <StyledLink to="/login" onClick={() => setShow(false)}>
+            <h4>Login</h4>
+          </StyledLink>
+          <StyledLink to="/signup" onClick={() => setShow(false)}>
+            <h4>Sign Up</h4>
+          </StyledLink>
+        </User>
+      ) : (
+        ""
+      )}
+    </Fragment>
   );
 };
 
-export default withStyles(styles)(Navbar);
+export default connect()(Navbar);

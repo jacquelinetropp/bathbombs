@@ -1,25 +1,29 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
-import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Home from "./pages/Home";
-
-import { Provider } from "react-redux";
-import store from "./store";
-import { ReactReduxFirebaseProvider } from "react-redux-firebase";
-import { createFirestoreInstance } from "redux-firestore";
-import firebase from "./firebase/firebase";
-import theme from "./utils/theme";
+import styled from 'styled-components';
 import Navbar from "./components/navbar/navbar";
+import Footer from "./components/footer/Footer";
+import SignUp from "./components/auth/SignUp";
+
+const Page = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+`
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-    <Navbar />
-    <Switch>
-      <Route path="/" component={Home} />
-    </Switch>
-    </ThemeProvider>
+    <Fragment>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/signup" component={SignUp} />
+      </Switch>
+      <Footer />
+    </Fragment>
   );
 }
 
