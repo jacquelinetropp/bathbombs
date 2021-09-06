@@ -1,1 +1,5 @@
-export { signUp, signIn, signOut, test } from "./user/userActions";
+export { signUp, signIn, signOut } from "./user/userActions";
+
+export {getShopItems} from './items/itemsActions';
+
+export {addItem} from './cart/cartActions';

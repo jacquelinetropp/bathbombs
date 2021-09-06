@@ -47,6 +47,4 @@ export const signIn =
     dispatch({ type: actions.AUTH_END });
   };
 
-export const test = () => async (dispatch) => {
-  console.log("test");
-};
+

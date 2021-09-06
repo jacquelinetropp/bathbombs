@@ -1,45 +1,22 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import logo from "../../images/logo .png";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import AccountBoxIcon from "@material-ui/icons/AccountBox";
 import { StyledLink } from "../styles";
 import { connect } from "react-redux";
+import { AccountIcon, ShoppingIcon } from "../styles/Icons";
+import { NavbarDiv, Logo, Icons, User, UserLink, UserButton } from "./navbar.styles";
+import * as actions from "../../store/actions";
+import Button from "../Form/Button";
 
-import styled from "styled-components";
+const Navbar = ({ signOut, user }) => {
+  const [color, setColor] = useState("transparent");
+  useEffect(() => {
+    document.addEventListener("scroll", () => {
+      const backgroundColor = window.scrollY < 100 ? "transparent" : "white";
 
-const NavbarDiv = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  z-index: 10;
-  padding: 2rem;
-  width: 100%;
-  top: 0;
-  left: 0;
-`;
-
-const Logo = styled.img`
-  height: 30px;
-`;
-
-const Icons = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
-const User = styled.div`
-  position: absolute;
-  top: 6%;
-  right: 5%;
-  z-index: 10;
-  display: flex;
-  clip-path: polygon(0 25%, 0 100%, 100% 100%, 100% 26%, 69% 25%, 49% 1%, 33% 22%);
-  background-color: purple;
-`;
-
-const Navbar = () => {
+      setColor(backgroundColor);
+    });
+  });
+  console.log(color);
   const [show, setShow] = useState(false);
   console.log(show);
   return (
@@ -60,25 +37,31 @@ const Navbar = () => {
         <Icons>
           <StyledLink to="/checkout">
             <h4>
-              <ShoppingCartIcon />
+              <ShoppingIcon />
             </h4>
           </StyledLink>
 
           <h4>
-            <AccountBoxIcon onClick={() => setShow(true)} />
+            <AccountIcon onClick={() => setShow(!show)} />
           </h4>
         </Icons>
       </NavbarDiv>
 
       {show ? (
-        <User>
-          <StyledLink to="/login" onClick={() => setShow(false)}>
-            <h4>Login</h4>
-          </StyledLink>
-          <StyledLink to="/signup" onClick={() => setShow(false)}>
-            <h4>Sign Up</h4>
-          </StyledLink>
-        </User>
+        user ? (
+          <User user={user}>
+            <UserButton onClick={() => signOut()}>Sign Out</UserButton>
+          </User>
+        ) : (
+          <User user={user}>
+            <UserLink to="/login" onClick={() => setShow(false)}>
+              <h4>Login</h4>
+            </UserLink>
+            <UserLink to="/signup" onClick={() => setShow(false)}>
+              <h4>Sign Up</h4>
+            </UserLink>
+          </User>
+        )
       ) : (
         ""
       )}
@@ -86,4 +69,12 @@ const Navbar = () => {
   );
 };
 
-export default connect()(Navbar);
+const mapStateToProps = ({ firebase }) => ({
+  user: firebase.auth.uid,
+});
+
+const mapDispatchToProps = {
+  signOut: actions.signOut,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

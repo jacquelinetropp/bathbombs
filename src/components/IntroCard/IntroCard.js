@@ -1,10 +1,8 @@
 import React from "react";
 import Card from "../Cards/Card";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import EcoIcon from "@material-ui/icons/Eco";
-import StarIcon from "@material-ui/icons/Star";
 
 import styled from "styled-components";
+import { HeartIcon, LeafIcon, StarIcon } from "../styles/Icons";
 
 const CardGrid = styled.div`
   display: grid;
@@ -19,13 +17,13 @@ const IntroCard = () => {
       <Card
         title="Natural Ingredients"
         text="All of our ingredients are 98% natural and sourced with care for the environment"
-        icon={<EcoIcon />}
+        icon={<LeafIcon />}
       />
 
       <Card
         title="Made with Love"
         text="All of bath bombs are made in small batches with love"
-        icon={<FavoriteIcon />}
+        icon={<HeartIcon />}
       />
 
       <Card

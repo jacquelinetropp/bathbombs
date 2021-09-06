@@ -2,14 +2,15 @@ import React, { Fragment, useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import Heading from "../styles/Headings";
-import Message from "../styles/Message";
-import Button from "../Form/Button";
+import Heading from "../../components/styles/Headings";
+import Message from "../../components/styles/Message";
+import Button from "../../components/Form/Button";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-import Input from "../Form/Input";
-import { MessageWrapper, Page } from "../styles";
+import Input from "../../components/Form/Input";
+import { MessageWrapper, Page } from "../../components/styles";
+import { Link, withRouter} from "react-router-dom";
 
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -45,7 +46,7 @@ const ButtonWrapper = styled.div`
   grid-column: 1/-1;
 `;
 
-const SignUp = ({ signUp, loading, error }) => {
+const SignUp = ({ signUp, loading, error, history }) => {
   //   useEffect(() => {
   //     return () => {
   //       cleanUp();
@@ -63,6 +64,7 @@ const SignUp = ({ signUp, loading, error }) => {
       validationSchema={SignUpSchema}
       onSubmit={async (values) => {
         await signUp(values);
+        history.push("/");
       }}
     >
       {({ isSubmitting, isValid }) => (
@@ -105,6 +107,7 @@ const SignUp = ({ signUp, loading, error }) => {
                 Sign up
               </Button>
             </FormWrapper>
+            <Link to="/login">Have an account? Login Here!</Link>
           </Main>
         </Page>
       )}
@@ -122,4 +125,4 @@ const mapDispatchToProps = {
   //   cleanUp: actions.clean,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));
