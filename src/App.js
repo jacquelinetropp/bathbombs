@@ -9,6 +9,7 @@ import SignUp from "./pages/auth/SignUp";
 import { connect } from "react-redux";
 import Login from "./pages/auth/Login";
 import Shop from "./pages/Shop";
+import Checkout from "./pages/Checkout";
 
 const Page = styled.div`
   display: flex;
@@ -25,6 +26,7 @@ function App({ authenticated }) {
       <Fragment>
         <Route exact path="/" component={Home} />
         <Route exact path="/shop" component={Shop} />
+        <Route exact path="/checkout" component={Checkout} />
       </Fragment>
     );
   } else {

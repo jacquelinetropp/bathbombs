@@ -1,5 +1,5 @@
 import * as actions from "./cartTypes";
-import {addItemToCart, removeItemFromCart} from './cartUtils';
+import { addItemToCart, removeItemFromCart } from "./cartUtils";
 
 const initialState = {
   loading: false,
@@ -9,23 +9,23 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case actions.ADD_ITEM_START:
-      return {
-        ...state,
-        loading: true,
-      };
     case actions.ADD_ITEM_SUCCESS:
       return {
         ...state,
-        loading: false,
-        error: false,
         cartItems: addItemToCart(state.cartItems, payload),
       };
-    case actions.ADD_ITEM_FAIL:
+    case actions.REMOVE_ITEM_SUCCESS:
       return {
         ...state,
-        loading: false,
-        error: payload,
+        cartItems: removeItemFromCart(state.cartItems, payload),
+      };
+
+    case actions.CLEAR_ITEM_SUCCESS:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem.id !== payload.id
+        ),
       };
     default:
       return state;

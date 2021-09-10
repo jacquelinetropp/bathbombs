@@ -3,9 +3,17 @@ import logo from "../../images/logo .png";
 import { StyledLink } from "../styles";
 import { connect } from "react-redux";
 import { AccountIcon, ShoppingIcon } from "../styles/Icons";
-import { NavbarDiv, Logo, Icons, User, UserLink, UserButton } from "./navbar.styles";
+import {
+  NavbarDiv,
+  Logo,
+  Icons,
+  User,
+  UserLink,
+  UserButton,
+} from "./navbar.styles";
 import * as actions from "../../store/actions";
 import Button from "../Form/Button";
+import CartDropdown from "../CartDropDown/CartDropdown";
 
 const Navbar = ({ signOut, user }) => {
   const [color, setColor] = useState("transparent");
@@ -18,7 +26,11 @@ const Navbar = ({ signOut, user }) => {
   });
   console.log(color);
   const [show, setShow] = useState(false);
+  const [cartShow, setCartShow] = useState(false);
+
   console.log(show);
+  console.log(cartShow);
+
   return (
     <Fragment>
       <NavbarDiv>
@@ -35,11 +47,9 @@ const Navbar = ({ signOut, user }) => {
           <h4>Shop</h4>
         </StyledLink>
         <Icons>
-          <StyledLink to="/checkout">
-            <h4>
-              <ShoppingIcon />
-            </h4>
-          </StyledLink>
+          <h4>
+            <ShoppingIcon onClick={() => setCartShow(!cartShow)} />
+          </h4>
 
           <h4>
             <AccountIcon onClick={() => setShow(!show)} />
@@ -65,6 +75,8 @@ const Navbar = ({ signOut, user }) => {
       ) : (
         ""
       )}
+
+      {cartShow ? <CartDropdown /> : ""}
     </Fragment>
   );
 };

@@ -17,15 +17,15 @@ const Shop = ({ getShopItems, items, loading }) => {
   useEffect(() => {
     getShopItems();
   }, []);
-  console.log(items);
 
   let content;
+  console.log(items);
 
   if (loading || !items) {
     content = <div>loading...</div>;
   } else {
     content = items.map((item) => (
-      <ItemCard item={item}/>
+      <ItemCard item={item} key={item.id}/>
     ));
   }
 
