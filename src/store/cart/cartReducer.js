@@ -27,6 +27,11 @@ export default (state = initialState, { type, payload }) => {
           (cartItem) => cartItem.id !== payload.id
         ),
       };
+    case actions.CLEAR_ALL_ITEMS:
+      return {
+        ...state,
+        cartItems: []
+      }
     default:
       return state;
   }

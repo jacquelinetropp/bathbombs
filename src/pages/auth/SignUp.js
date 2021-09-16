@@ -10,7 +10,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../../components/Form/Input";
 import { MessageWrapper, Page } from "../../components/styles";
-import { Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -27,6 +27,11 @@ const SignUpSchema = Yup.object().shape({
   password: Yup.string()
     .required("The passoword is required.")
     .min(8, "Too short"),
+  street: Yup.string().required("The street is required.").min(5, "Too short"),
+  city: Yup.string().required("The city is required.").min(4, "Too short"),
+  zipcode: Yup.string()
+  .required("The zipcode is required.")
+  .min(5, "Too short").max(5, "Too long")
 });
 
 const Main = styled.div`
@@ -60,6 +65,10 @@ const SignUp = ({ signUp, loading, error, history }) => {
         lastName: "",
         email: "",
         password: "",
+        street: "",
+        city: "",
+        state: "",
+        zipcode: "",
       }}
       validationSchema={SignUpSchema}
       onSubmit={async (values) => {
@@ -97,6 +106,31 @@ const SignUp = ({ signUp, loading, error, history }) => {
                 type="password"
                 name="password"
                 placeholder="Your password..."
+                component={Input}
+              />
+              <h4>Please fill out your address </h4>
+              <Field
+                type="text"
+                name="street"
+                placeholder="Street"
+                component={Input}
+              />
+              <Field
+                type="text"
+                name="city"
+                placeholder="City"
+                component={Input}
+              />
+              <Field
+                type="text"
+                name="state"
+                placeholder="State"
+                component={Input}
+              />
+              <Field
+                type="text"
+                name="zipcode"
+                placeholder="Zipcode"
                 component={Input}
               />
               <Button

@@ -8,6 +8,7 @@ import cartReducer from "./cart/cartReducer";
 
 import storage from "redux-persist/lib/storage";
 import { persistReducer } from "redux-persist";
+import orderReducer from "./orders/orderReducer";
 
 const persistConfig = {
     key: "root",
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     items: itemsReducer,
     cart: cartReducer,
+    orders: orderReducer,
     firebase: firebaseReducer,
     firesore: firestoreReducer
 });

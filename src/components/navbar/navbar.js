@@ -24,12 +24,9 @@ const Navbar = ({ signOut, user }) => {
       setColor(backgroundColor);
     });
   });
-  console.log(color);
+  // console.log(color);
   const [show, setShow] = useState(false);
   const [cartShow, setCartShow] = useState(false);
-
-  console.log(show);
-  console.log(cartShow);
 
   return (
     <Fragment>
@@ -76,7 +73,7 @@ const Navbar = ({ signOut, user }) => {
         ""
       )}
 
-      {cartShow ? <CartDropdown /> : ""}
+      {cartShow ? <CartDropdown onClick={() => setCartShow(false)}/> : ""}
     </Fragment>
   );
 };

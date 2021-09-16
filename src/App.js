@@ -10,25 +10,36 @@ import { connect } from "react-redux";
 import Login from "./pages/auth/Login";
 import Shop from "./pages/Shop";
 import Checkout from "./pages/Checkout";
+import Admin from "./pages/Admin";
 
 const Page = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
+
+  min-height: 95vh;
 `;
 
-function App({ authenticated }) {
+function App({ authenticated, admin }) {
   let routes;
 
   if (authenticated) {
-    routes = (
-      <Fragment>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/shop" component={Shop} />
-        <Route exact path="/checkout" component={Checkout} />
-      </Fragment>
-    );
+    if (admin === "admin") {
+        routes = (
+          <Page>
+              <Route exact path="/" component={Admin} />
+          </Page>
+        )
+    } else {
+      routes = (
+        <Fragment>
+          <Page>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/shop" component={Shop} />
+            <Route exact path="/checkout" component={Checkout} />
+          </Page>
+        </Fragment>
+      );
+    }
   } else {
     routes = (
       <Fragment>
@@ -50,6 +61,7 @@ function App({ authenticated }) {
 
 const mapStateToProps = ({ firebase }) => ({
   authenticated: firebase.auth.uid,
+  admin: firebase.profile.firstName,
 });
 
 const mapDispatchToProps = {};

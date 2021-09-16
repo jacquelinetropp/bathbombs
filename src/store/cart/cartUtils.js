@@ -29,11 +29,3 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
         : cartItem
     );
   };
-  
-  export const cartItemTotal = (cartItems) => {
-    cartItems.reduce(
-      (acucumulatedQuantity, cartItem) =>
-        acucumulatedQuantity + cartItem.quantity * cartItem.price,
-      0
-    )
-  };
