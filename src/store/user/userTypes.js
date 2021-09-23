@@ -19,6 +19,3 @@ export const PROFILE_FAIL = "PROFILE_FAIL";
 export const DELETE_START = "DELETE_START";
 export const DELETE_FAIL = "DELETE_FAIL";
 
-export const ADD_ORDER_START = "ADD_ORDER_START";
-export const ADD_ORDER_SUCCESS = "ADD_ORDER_SUCCESS";
-export const ADD_ORDER_FAIL = "ADD_ORDER_FAIL";

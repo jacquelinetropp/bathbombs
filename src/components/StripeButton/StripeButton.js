@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 import Button from "../Form/Button";
 import * as actions from "../../store/actions";
 
-const StripeButton = ({ price, cartItem, addItemToUser, clearAllItems }) => {
+const StripeButton = ({ price, cartItem, completeOrderCheckout, clearAllItems }) => {
   const priceForStripe = price * 100;
   const publishableKey = "pk_test_rrFgcrDPIffSU3GW4LJwWMgK00wvUvACZn";
   const onToken = (token) => {
     alert("Payment Successful");
-    addItemToUser(cartItem);
+    completeOrderCheckout(cartItem);
     clearAllItems();
   };
   return (
@@ -37,7 +37,7 @@ const mapStateToProps = ({ cart }) => ({
 });
 
 const mapDispatchToProps = {
-  addItemToUser: actions.addItemToUser,
+  completeOrderCheckout: actions.completeOrderCheckout,
   clearAllItems: actions.clearAllItems
 
 };

@@ -32,7 +32,7 @@ const CartDropdown = ({ cartItems }) => {
   return (
     <Wrapper>
       {cartItems.length ? (
-        cartItems.map((item) => <CartItem item={item} key={item.key} />)
+        cartItems.map((item) => <CartItem item={item} key={item.id} />)
       ) : (
         <div>Your Cart is Empty</div>
       )}

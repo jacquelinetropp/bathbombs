@@ -45,11 +45,11 @@ const Navbar = ({ signOut, user }) => {
         </StyledLink>
         <Icons>
           <h4>
-            <ShoppingIcon onClick={() => setCartShow(!cartShow)} />
+            <ShoppingIcon onClick={() => {setCartShow(!cartShow); setShow(false)}} />
           </h4>
 
           <h4>
-            <AccountIcon onClick={() => setShow(!show)} />
+            <AccountIcon onClick={() => {setShow(!show); setCartShow(false)}} />
           </h4>
         </Icons>
       </NavbarDiv>

@@ -19,7 +19,6 @@ const Shop = ({ getShopItems, items, loading }) => {
   }, []);
 
   let content;
-  console.log(items);
 
   if (loading || !items) {
     content = <div>loading...</div>;
