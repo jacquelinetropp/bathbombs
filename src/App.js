@@ -45,6 +45,8 @@ function App({ authenticated, admin }) {
       <Fragment>
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={SignUp} />
+        <Route exact path="/shop" component={Shop} />
+        <Route exact path="/checkout" component={Checkout} />
         <Route path="/login" component={Login} />
       </Fragment>
     );
@@ -63,7 +65,5 @@ const mapStateToProps = ({ firebase }) => ({
   authenticated: firebase.auth.uid,
   admin: firebase.profile.firstName,
 });
-
-const mapDispatchToProps = {};
 
 export default connect(mapStateToProps)(App);

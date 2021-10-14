@@ -32,6 +32,10 @@ const LoginSchema = Yup.object().shape({
     .min(8, "Too short"),
 });
 
+const ButtonWrapper = styled.div`
+grid-column: 1/-1;
+`
+
 const Login = ({ loading, error, login, history }) => {
   //   useEffect(() => {
   //     return () => {
@@ -67,7 +71,7 @@ const Login = ({ loading, error, login, history }) => {
               placeholder="Your Password"
               component={Input}
             />
-
+        <ButtonWrapper>
             <Button
               loading={loading ? "Logging In..." : null}
               disabled={!isValid || isSubmitting}
@@ -75,6 +79,7 @@ const Login = ({ loading, error, login, history }) => {
             >
               Login
             </Button>
+            </ButtonWrapper>
             <MessageWrapper>
               <Message error show={error}>
                 {error}

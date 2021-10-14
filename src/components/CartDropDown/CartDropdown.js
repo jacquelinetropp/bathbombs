@@ -1,42 +1,46 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CartItem from "../CartItem/CartItem";
+import { ButtonLink } from "../styles";
+import * as actions from '../../store/actions';
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 10;
-  top: 10%;
+  top: 7%;
   right: 10%;
   border: 1px solid var(--color-text);
   padding: 1rem;
   background-color: white;
-`;
-
-const StyledLink = styled(Link)`
-  outline: none;
-  padding: 1.2rem 2rem;
-  border-radius: 2px;
-  font-size: 1.2rem;
-  color: var(--color-white);
-  font-weight: 700;
-  box-shadow: 0rem 0.5rem 3.5rem var(--shadow);
-  background-color: var(--color-main);
   text-align: center;
 `;
 
-const CartDropdown = ({ cartItems }) => {
+const Header = styled.h4`
+  font-size: 1.8rem;
+  text-align: center;
+`;
+
+const CartDropdown = ({ cartItems, closeCart }) => {
+  let content;
+  cartItems.length
+    ? (content = cartItems.map((item) => (
+        <CartItem item={item} key={item.id} />
+      )))
+    : (content = (
+        <Fragment>
+          <div>Your Cart is Empty</div>
+        </Fragment>
+      ));
+
   return (
     <Wrapper>
-      {cartItems.length ? (
-        cartItems.map((item) => <CartItem item={item} key={item.id} />)
-      ) : (
-        <div>Your Cart is Empty</div>
-      )}
-      <StyledLink to="/checkout">Checkout</StyledLink>
+    <Header>Checkout</Header>
+      {content}
+      <ButtonLink to="/checkout" onClick={()=> closeCart()}>Checkout</ButtonLink>
     </Wrapper>
   );
 };
@@ -45,6 +49,8 @@ const mapStateToProps = ({ cart }) => ({
   cartItems: cart.cartItems,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  closeCart: actions.closeCart
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown);

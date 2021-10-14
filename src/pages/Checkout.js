@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import * as actions from "../store/actions";
 import CheckoutItem from "../components/CheckoutItem/CheckoutItem";
 import { cartItemTotal } from "../store/cart/cartUtils";
 import StripeButton from "../components/StripeButton/StripeButton";
+import { ButtonLink } from "../components/styles";
 
 const Wrapper = styled.div`
   margin-top: 10rem;
@@ -39,7 +39,13 @@ const Payment = styled.div`
   margin: 1rem;
 `;
 
-const Checkout = ({ items }) => {
+const ButtonWrapper = styled.div`
+  width: fit-content;
+  margin: 2rem auto;
+
+`;
+
+const Checkout = ({ items, user }) => {
   const total = items.reduce(
     (acucumulatedQuantity, cartItem) =>
       acucumulatedQuantity + cartItem.quantity * cartItem.price,
@@ -57,20 +63,27 @@ const Checkout = ({ items }) => {
         )}
       </Items>
       <Total>Total: ${total}</Total>
+      {user ? (
+        <StripeButton price={total} />
+      ) : (
+        <ButtonWrapper>
+          <ButtonLink to="/login">Please Login to checkout</ButtonLink>
+        </ButtonWrapper>
+      )}
       <Payment>
         <div>
           *Please use the following test credit card as payment*
           <br />
           4242 4242 4242 4242 - Exp: 01/23 - CVV: 123
         </div>
-        <StripeButton price={total} />
       </Payment>
     </Wrapper>
   );
 };
 
-const mapStateToProps = ({ cart }) => ({
+const mapStateToProps = ({ cart, firebase }) => ({
   items: cart.cartItems,
+  user: firebase.auth.uid,
 });
 
 export default connect(mapStateToProps)(Checkout);

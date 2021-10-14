@@ -12,10 +12,10 @@ import {
   UserButton,
 } from "./navbar.styles";
 import * as actions from "../../store/actions";
-import Button from "../Form/Button";
 import CartDropdown from "../CartDropDown/CartDropdown";
+import MobileNav from "./MobileNav";
 
-const Navbar = ({ signOut, user }) => {
+const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
   const [color, setColor] = useState("transparent");
   useEffect(() => {
     document.addEventListener("scroll", () => {
@@ -24,66 +24,91 @@ const Navbar = ({ signOut, user }) => {
       setColor(backgroundColor);
     });
   });
-  // console.log(color);
   const [show, setShow] = useState(false);
-  const [cartShow, setCartShow] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
-  return (
-    <Fragment>
-      <NavbarDiv>
-        <StyledLink to="/">
-          <h4>Home</h4>
-        </StyledLink>
-        <StyledLink to="/about">
-          <h4>About</h4>
-        </StyledLink>
-        <StyledLink to="/">
-          <Logo src={logo} alt="Logo" />
-        </StyledLink>
-        <StyledLink to="/shop">
-          <h4>Shop</h4>
-        </StyledLink>
-        <Icons>
-          <h4>
-            <ShoppingIcon onClick={() => {setCartShow(!cartShow); setShow(false)}} />
-          </h4>
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+    });
+  }, []);
 
-          <h4>
-            <AccountIcon onClick={() => {setShow(!show); setCartShow(false)}} />
-          </h4>
-        </Icons>
-      </NavbarDiv>
+  let content;
 
-      {show ? (
-        user ? (
-          <User user={user}>
-            <UserButton onClick={() => signOut()}>Sign Out</UserButton>
-          </User>
+  if (width < 768) {
+    content = <MobileNav />;
+  } else if (width > 768) {
+    content = (
+      <Fragment>
+        <NavbarDiv>
+          <StyledLink to="/">
+            <h4>Home</h4>
+          </StyledLink>
+          <StyledLink to="/about">
+            <h4>About</h4>
+          </StyledLink>
+          <StyledLink to="/">
+            <Logo src={logo} alt="Logo" />
+          </StyledLink>
+          <StyledLink to="/shop">
+            <h4>Shop</h4>
+          </StyledLink>
+          <Icons>
+            <h4>
+              <ShoppingIcon
+                onClick={() => {
+                  toggleCart();
+                  setShow(false);
+                }}
+              />
+            </h4>
+
+            <h4>
+              <AccountIcon
+                onClick={() => {
+                  setShow(!show);
+                  closeCart();
+                }}
+              />
+            </h4>
+          </Icons>
+        </NavbarDiv>
+
+        {show ? (
+          user ? (
+            <User user={user}>
+              <UserButton onClick={() => signOut()}>Sign Out</UserButton>
+            </User>
+          ) : (
+            <User user={user}>
+              <UserLink to="/login" onClick={() => setShow(false)}>
+                <h4>Login</h4>
+              </UserLink>
+              <UserLink to="/signup" onClick={() => setShow(false)}>
+                <h4>Sign Up</h4>
+              </UserLink>
+            </User>
+          )
         ) : (
-          <User user={user}>
-            <UserLink to="/login" onClick={() => setShow(false)}>
-              <h4>Login</h4>
-            </UserLink>
-            <UserLink to="/signup" onClick={() => setShow(false)}>
-              <h4>Sign Up</h4>
-            </UserLink>
-          </User>
-        )
-      ) : (
-        ""
-      )}
+          ""
+        )}
 
-      {cartShow ? <CartDropdown onClick={() => setCartShow(false)}/> : ""}
-    </Fragment>
-  );
+        {hidden ? <CartDropdown onClick={() => toggleCart()} /> : ""}
+      </Fragment>
+    );
+  }
+  return <Fragment>{content}</Fragment>;
 };
 
-const mapStateToProps = ({ firebase }) => ({
+const mapStateToProps = ({ firebase, cart }) => ({
   user: firebase.auth.uid,
+  hidden: cart.open,
 });
 
 const mapDispatchToProps = {
   signOut: actions.signOut,
+  toggleCart: actions.toggleCart,
+  closeCart: actions.closeCart,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

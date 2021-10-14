@@ -4,6 +4,7 @@ import { addItemToCart, removeItemFromCart } from "./cartUtils";
 const initialState = {
   loading: false,
   error: null,
+  open: false,
   cartItems: [],
 };
 
@@ -32,6 +33,16 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         cartItems: []
       }
+    case actions.TOGGLE_CART_HIDDEN:
+      return {
+        ...state,
+        open: !state.open 
+      }
+      case actions.CLOSE_CART_HIDDEN:
+        return {
+          ...state,
+          open: false
+        }
     default:
       return state;
   }

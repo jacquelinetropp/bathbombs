@@ -51,6 +51,11 @@ const ButtonWrapper = styled.div`
   grid-column: 1/-1;
 `;
 
+const Address = styled.h4`
+  grid-column: 1/-1;
+  font-size: 1.5rem; 
+`;
+
 const SignUp = ({ signUp, loading, error, history }) => {
   //   useEffect(() => {
   //     return () => {
@@ -108,7 +113,7 @@ const SignUp = ({ signUp, loading, error, history }) => {
                 placeholder="Your password..."
                 component={Input}
               />
-              <h4>Please fill out your address </h4>
+              <Address>Please fill out your address </Address>
               <Field
                 type="text"
                 name="street"
@@ -133,6 +138,7 @@ const SignUp = ({ signUp, loading, error, history }) => {
                 placeholder="Zipcode"
                 component={Input}
               />
+              <ButtonWrapper>
               <Button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing Up" : null}
@@ -140,6 +146,7 @@ const SignUp = ({ signUp, loading, error, history }) => {
               >
                 Sign up
               </Button>
+              </ButtonWrapper>
             </FormWrapper>
             <Link to="/login">Have an account? Login Here!</Link>
           </Main>

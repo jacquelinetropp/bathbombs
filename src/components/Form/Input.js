@@ -14,7 +14,6 @@ const InputWrapper = styled.div`
 
 const StyledInput = styled.input`
   padding: 1.2rem 2rem;
-  width: 100%;
   color: var(--color-mainLight);
   border: 1px solid black;
   font-weight: 500;

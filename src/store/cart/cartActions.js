@@ -18,3 +18,11 @@ export const clearItem = (item) => ({
 export const clearAllItems = () => ({
     type: actions.CLEAR_ALL_ITEMS
 })
+
+export const toggleCart = () => ({
+    type: actions.TOGGLE_CART_HIDDEN
+})
+
+export const closeCart = () => ({
+    type: actions.CLOSE_CART_HIDDEN
+})
