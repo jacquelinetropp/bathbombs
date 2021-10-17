@@ -2,22 +2,22 @@ import React from "react";
 import { Fragment } from "react";
 import Intro from "../components/Intro/Intro";
 import IntroCard from "../components/IntroCard/IntroCard";
-import Button from '../components/Form/Button';
 import {connect} from 'react-redux';
 import * as actions from '../store/actions';
+import styled from 'styled-components';
+
+const Page = styled.div`
+  margin-top: 6.5rem;
+`
 
 const Home = () => {
   return (
-    <Fragment>
+    <Page>
       <Intro />
         <IntroCard />
-    </Fragment>
+    </Page>
   );
 };
-
-const mapStateToProps = (state) => ({
-  
-})
 
 const mapDispatchToProps = {
     test: actions.signUp

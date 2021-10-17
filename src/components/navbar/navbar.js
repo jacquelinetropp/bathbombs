@@ -16,14 +16,6 @@ import CartDropdown from "../CartDropDown/CartDropdown";
 import MobileNav from "./MobileNav";
 
 const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
-  const [color, setColor] = useState("transparent");
-  useEffect(() => {
-    document.addEventListener("scroll", () => {
-      const backgroundColor = window.scrollY < 100 ? "transparent" : "white";
-
-      setColor(backgroundColor);
-    });
-  });
   const [show, setShow] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -35,12 +27,12 @@ const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
 
   let content;
 
-  if (width < 768) {
+  if (width <= 768) {
     content = <MobileNav />;
   } else if (width > 768) {
     content = (
       <Fragment>
-        <NavbarDiv>
+        <NavbarDiv >
           <StyledLink to="/">
             <h4>Home</h4>
           </StyledLink>

@@ -11,6 +11,7 @@ import Login from "./pages/auth/Login";
 import Shop from "./pages/Shop";
 import Checkout from "./pages/Checkout";
 import Admin from "./pages/Admin";
+import About from "./pages/About";
 
 const Page = styled.div`
   display: flex;
@@ -18,6 +19,12 @@ const Page = styled.div`
 
   min-height: 95vh;
 `;
+
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+`
 
 function App({ authenticated, admin }) {
   let routes;
@@ -31,33 +38,35 @@ function App({ authenticated, admin }) {
         )
     } else {
       routes = (
-        <Fragment>
+        <div>
           <Page>
             <Route exact path="/" component={Home} />
             <Route exact path="/shop" component={Shop} />
             <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/about" component={About} />
           </Page>
-        </Fragment>
+        </div>
       );
     }
   } else {
     routes = (
-      <Fragment>
+      <div>
         <Route exact path="/" component={Home} />
         <Route path="/signup" component={SignUp} />
         <Route exact path="/shop" component={Shop} />
         <Route exact path="/checkout" component={Checkout} />
         <Route path="/login" component={Login} />
-      </Fragment>
+        <Route exact path="/about" component={About} />
+      </div>
     );
   }
 
   return (
-    <Fragment>
+    <Wrapper>
       <Navbar />
       <Switch>{routes}</Switch>
       <Footer />
-    </Fragment>
+    </Wrapper>
   );
 }
 

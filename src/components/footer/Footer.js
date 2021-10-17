@@ -6,6 +6,7 @@ const FooterDiv = styled.div`
   background-color: var(--color-tertiary);
   padding: 1.5rem;
   width: 100%;
+  align-self: bottom;
 `;
 
 const Footer = () => {

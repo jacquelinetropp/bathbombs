@@ -6,6 +6,7 @@ const Main = styled.div`
   flex-direction: column;
   align-items: center;
   border: 1px solid black;
+  border-radius: 2px;
   height: 100%;
 `;
 

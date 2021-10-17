@@ -11,6 +11,8 @@ export const NavbarDiv = styled.div`
   width: 100%;
   top: 0;
   left: 0;
+  background-color: var(--color-tertiary);
+  box-shadow: 0 0 1rem rgba(0,0,0, .3);
 `;
 
 export const Logo = styled.img`

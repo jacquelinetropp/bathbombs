@@ -12,11 +12,12 @@ const NavbarDiv = styled.div`
   padding: 1.2rem;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  background-color: var(--color-tertiary);
   position: relative;
   position: fixed;
   z-index: 1;
   width: 100%;
+  box-shadow: 0 0 1rem rgba(0,0,0, .3);
   top: 0;
 `;
 
@@ -39,9 +40,9 @@ const MobileNav = ({ user }) => {
       </div>
       {show ? (
         <Links>
-        <StyledLink to="/" onClick={() => setShow(false)}>
-        <h4>Home</h4>
-      </StyledLink>
+          <StyledLink to="/" onClick={() => setShow(false)}>
+            <h4>Home</h4>
+          </StyledLink>
           <StyledLink to="/about" onClick={() => setShow(false)}>
             <h4>About</h4>
           </StyledLink>
@@ -54,15 +55,17 @@ const MobileNav = ({ user }) => {
             </StyledLink>
           ) : (
             <Fragment>
-                <StyledLink to="/login" onClick={() => setShow(false)}>
-                    <h4>Log in</h4>
-                </StyledLink>
-                <StyledLink to="/signup" onClick={() => setShow(false)}>
+              <StyledLink to="/login" onClick={() => setShow(false)}>
+                <h4>Log in</h4>
+              </StyledLink>
+              <StyledLink to="/signup" onClick={() => setShow(false)}>
                 <h4>Sign Up</h4>
-            </StyledLink>
+              </StyledLink>
             </Fragment>
           )}
-          <ButtonLink to="/checkout" onClick={() => setShow(false)}>Cart</ButtonLink>
+          <ButtonLink to="/checkout" onClick={() => setShow(false)}>
+            Cart
+          </ButtonLink>
         </Links>
       ) : (
         ""
