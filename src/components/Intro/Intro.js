@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import header from "../../images/intro2.jpg";
 import Button from "../Form/Button";
 import styled from "styled-components";
@@ -19,15 +19,18 @@ const IntroText = styled.div`
   transform: translate(-50%, -50%);
   text-align: center;
 `;
-const Text = styled.div`
+
+const IntroMessage = styled.div`
+  background-color: var(--color-mainDark);
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  margin-top: -10px;
+`;
+const Text = styled.h2`
   font-size: 1.5rem;
 
   @media only screen and (max-width: 768px) {
     font-size: 1.2rem;
-  }
-
-  @media only screen and (max-width: 540px) {
-    display: none;
   }
 `;
 
@@ -52,26 +55,24 @@ const Header = styled.h1`
   }
 `;
 
-const ButtonWrapper = styled.div`
-  @media only screen and (max-width: 425px) {
-    display: none;
-  }
-`;
-
 const Intro = () => {
   return (
-    <Wrapper>
-      <IntroImage src={header} alt="bathbombs" />
-      <IntroText>
-        <Header>Natural Bath Bombs</Header>
-        <Text>Bath bombs built with peace of mind at heart</Text>
-        <ButtonWrapper>
-        <Button variant="outlined" contain>
-          Learn More
-        </Button>
-        </ButtonWrapper>
-      </IntroText>
-    </Wrapper>
+    <Fragment>
+      <Wrapper>
+        <IntroImage src={header} alt="bathbombs" />
+        <IntroText>
+          <Header>Natural Bath Bombs</Header>
+        </IntroText>
+      </Wrapper>
+
+      <IntroMessage>
+          <Text>Bath bombs built with peace of mind at heart</Text>
+
+          <Button variant="outlined" contain>
+            Learn More
+          </Button>
+        </IntroMessage>
+    </Fragment>
   );
 };
 

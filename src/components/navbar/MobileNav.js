@@ -17,7 +17,7 @@ const NavbarDiv = styled.div`
   position: fixed;
   z-index: 1;
   width: 100%;
-  box-shadow: 0 0 1rem rgba(0,0,0, .3);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
   top: 0;
 `;
 
@@ -35,9 +35,9 @@ const MobileNav = ({ user }) => {
       <StyledLink to="/">
         <Logo src={logo} alt="Logo" />
       </StyledLink>
-      <div onClick={() => setShow(!show)}>
-        <Hamburger />
-      </div>
+
+      <Hamburger onClick={() => setShow(!show)} />
+
       {show ? (
         <Links>
           <StyledLink to="/" onClick={() => setShow(false)}>

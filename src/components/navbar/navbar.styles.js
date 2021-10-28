@@ -1,18 +1,25 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+export const NavbarWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+`
+
 export const NavbarDiv = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  position: fixed;
-  z-index: 10;
   padding: 2rem;
-  width: 100%;
   top: 0;
   left: 0;
   background-color: var(--color-tertiary);
   box-shadow: 0 0 1rem rgba(0,0,0, .3);
+  z-index: 10;
+  position: relative;
 `;
 
 export const Logo = styled.img`
@@ -53,4 +60,13 @@ export const UserButton = styled.button`
     margin: 1rem;
     color: var(--color-tertiary);
     border: none;
+`
+
+export const JaggedLine = styled.img`
+  background-repeat: repeat-x;
+  height: 45px;
+  position: absolute;
+  z-index: 3;
+  top: 75%;
+  width: 100%;
 `

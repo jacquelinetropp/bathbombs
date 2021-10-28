@@ -10,10 +10,12 @@ import {
   User,
   UserLink,
   UserButton,
+  JaggedLine, NavbarWrapper
 } from "./navbar.styles";
 import * as actions from "../../store/actions";
 import CartDropdown from "../CartDropDown/CartDropdown";
 import MobileNav from "./MobileNav";
+import LineImage from '../../images/jaggedline.png';
 
 const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
   const [show, setShow] = useState(false);
@@ -31,7 +33,7 @@ const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
     content = <MobileNav />;
   } else if (width > 768) {
     content = (
-      <Fragment>
+      <NavbarWrapper>
         <NavbarDiv >
           <StyledLink to="/">
             <h4>Home</h4>
@@ -86,7 +88,8 @@ const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
         )}
 
         {hidden ? <CartDropdown onClick={() => toggleCart()} /> : ""}
-      </Fragment>
+        <JaggedLine src={LineImage} alt="jagged line" />
+      </NavbarWrapper>
     );
   }
   return <Fragment>{content}</Fragment>;
