@@ -15,7 +15,7 @@ import {
 import * as actions from "../../store/actions";
 import CartDropdown from "../CartDropDown/CartDropdown";
 import MobileNav from "./MobileNav";
-import LineImage from '../../images/jaggedline.png';
+import LineImage from '../../images/jaggedline-pink.png';
 
 const Navbar = ({ signOut, user, toggleCart, hidden, closeCart }) => {
   const [show, setShow] = useState(false);

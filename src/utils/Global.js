@@ -27,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
     --color-text: ${(props) => props.theme.colors.textColor};
     --color-white: ${(props) => props.theme.colors.whiteColor};
     --color-errorRed: ${(props) => props.theme.colors.errorRed};
+    --color-offWhite: ${(props) => props.theme.colors.offWhite};
     --shadow: ${(props) => props.theme.colors.shadow};
     @media ${(props) => props.theme.mediaQueries.small} {
       font-size: 60%;
@@ -47,6 +48,10 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
     text-decoration: none;
     font-family: inherit;
+  }
+  h1, h2, h3, h4, h5, h6 { 
+      font-family: 'Architects Daughter', cursive;
+  
   }
 `;
 

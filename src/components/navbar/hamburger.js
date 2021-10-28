@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import styled from "styled-components";
-import "./hamburger.styles.css";
 
 const HamburgerWrapper = styled.div`
     position: fixed;

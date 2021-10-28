@@ -5,6 +5,7 @@ import IntroCard from "../components/IntroCard/IntroCard";
 import {connect} from 'react-redux';
 import * as actions from '../store/actions';
 import styled from 'styled-components';
+import PopularItems from "../components/PopularItems/PopularItems";
 
 const Page = styled.div`
   margin-top: 6.5rem;
@@ -15,6 +16,7 @@ const Home = () => {
     <Page>
       <Intro />
         <IntroCard />
+        <PopularItems />
     </Page>
   );
 };

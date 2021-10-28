@@ -2,11 +2,16 @@ import React, { Fragment } from "react";
 import header from "../../images/intro2.jpg";
 import Button from "../Form/Button";
 import styled from "styled-components";
+import { ButtonLink } from "../styles";
 
 const Wrapper = styled.div`
   width: 100%;
   position: relative;
 `;
+
+const ButtonWrapper = styled.div`
+  margin: 2rem;
+`
 
 const IntroImage = styled.img`
   width: 100%;
@@ -23,7 +28,7 @@ const IntroText = styled.div`
 const IntroMessage = styled.div`
   background-color: var(--color-mainDark);
   text-align: center;
-  padding: 2rem 0 1rem 0;
+  padding: 3rem 0 2rem 0;
   margin-top: -10px;
 `;
 const Text = styled.h2`
@@ -67,10 +72,11 @@ const Intro = () => {
 
       <IntroMessage>
           <Text>Bath bombs built with peace of mind at heart</Text>
-
-          <Button variant="outlined" contain>
+        <ButtonWrapper>
+          <ButtonLink to="/about" contain>
             Learn More
-          </Button>
+          </ButtonLink>
+          </ButtonWrapper>
         </IntroMessage>
     </Fragment>
   );

@@ -16,7 +16,7 @@ export const NavbarDiv = styled.div`
   padding: 2rem;
   top: 0;
   left: 0;
-  background-color: var(--color-tertiary);
+  background-color: var(--color-second);
   box-shadow: 0 0 1rem rgba(0,0,0, .3);
   z-index: 10;
   position: relative;
@@ -34,14 +34,14 @@ export const Icons = styled.div`
 
 export const User = styled.div`
   position: absolute;
-  top: 6%;
+  top: 65%;
   right: 7%;
   z-index: 10;
   display: flex;
   flex-direction: column;
   padding-top: ${({user}) => (user ? "2.5rem" : "5rem")};
   clip-path: polygon(0 25%, 0 100%, 100% 100%, 100% 25%, 70% 25%, 50% 1%, 30% 25%);
-  background-color: var(--color-mainLight);
+  background-color: var(--color-main);
   text-align: center;
 `;
 

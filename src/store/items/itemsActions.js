@@ -15,6 +15,8 @@ export const getShopItems =
             name: doc.data().name,
             price: doc.data().price,
             img: doc.data().img,
+            color: doc.data().color,
+            about: doc.data().about
           });
         });
         dispatch({ type: actions.GET_ITEMS_SUCCESS, payload: items });

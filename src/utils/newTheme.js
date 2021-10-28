@@ -1,15 +1,16 @@
 const theme = {
     colors: {
-      main: "#F2C8A2",
-      mainDark: "#F2B5A7",
+      main: "#60DFFC",
+      mainDark: "#9491C2",
       mainLight: "#F2D194",
-      second: "#F2A0B6",
-      secondLight: "#e3b3be",
-      tertiary: "#F29BC4",
+      second: "#F384AE",
+      secondLight: "#F5E345",
+      tertiary: "#8BCD94",
       textColor: "#333",
       whiteColor: "#fff",
       errorRed: "#ff3838",
       shadow: "rgba(0,0,0,.2)",
+      offWhite: "#f3f2ee"
     },
   
     mediaQueries: {

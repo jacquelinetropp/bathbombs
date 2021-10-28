@@ -4,7 +4,13 @@ import styled from "styled-components";
 import logo from "../../images/logo .png";
 import { ButtonLink, StyledLink } from "../styles";
 import Hamburger from "./hamburger";
-import { Logo } from "./navbar.styles";
+import { JaggedLine, Logo } from "./navbar.styles";
+import LineImage from '../../images/jaggedline.png';
+
+const NavbarWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const NavbarDiv = styled.div`
   display: flex;
@@ -12,10 +18,10 @@ const NavbarDiv = styled.div`
   padding: 1.2rem;
   justify-content: center;
   align-items: center;
-  background-color: var(--color-tertiary);
+  background-color: var(--color-second);
   position: relative;
   position: fixed;
-  z-index: 1;
+  z-index: 8;
   width: 100%;
   box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
   top: 0;
@@ -71,6 +77,7 @@ const MobileNav = ({ user }) => {
         ""
       )}
     </NavbarDiv>
+
   );
 };
 

@@ -16,7 +16,7 @@ import About from "./pages/About";
 const Page = styled.div`
   display: flex;
   flex-direction: column;
-
+  background-color: var(--color-offWhite);
   min-height: 95vh;
 `;
 

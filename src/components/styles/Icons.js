@@ -11,6 +11,7 @@ import {
 } from "react-icons/ai";
 import { GrClose } from "react-icons/gr";
 import { IoMdArrowDropleft, IoMdArrowDropright } from "react-icons/io";
+import { BsDot } from "react-icons/bs";
 
 export const AccountIcon = styled(MdAccountBox)`
   font-size: 2rem;
@@ -22,15 +23,15 @@ export const ShoppingIcon = styled(FaShoppingCart)`
 `;
 
 export const LeafIcon = styled(RiLeafFill)`
-  font-size: 2rem;
+  font-size: 5rem;
 `;
 
 export const HeartIcon = styled(AiFillHeart)`
-  font-size: 2rem;
+  font-size: 5rem;
 `;
 
 export const StarIcon = styled(AiFillStar)`
-  font-size: 2rem;
+  font-size: 5rem;
 `;
 
 export const XIcon = styled(GrClose)`
@@ -77,4 +78,8 @@ export const RemoveOrder = styled(MdClose)`
   &:hover {
     color: var(--color-main);
   }
+`;
+
+export const DotIcon = styled(BsDot)`
+  font-size: 2rem;
 `;

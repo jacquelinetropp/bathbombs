@@ -11,10 +11,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: absolute;
   z-index: 10;
-  top: 7%;
-  right: 10%;
+  top: 65%;
+  right: 7%;
   border: 1px solid var(--color-text);
-  padding: 1rem;
+  clip-path: polygon(0 25%, 0 100%, 100% 100%, 100% 25%, 70% 25%, 50% 1%, 30% 25%);
+  padding: 5rem 1rem 1rem 1rem;
   background-color: white;
   text-align: center;
 `;
