@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import header from "../../images/intro2.jpg";
-import Button from "../Form/Button";
 import styled from "styled-components";
 import { ButtonLink } from "../styles";
 

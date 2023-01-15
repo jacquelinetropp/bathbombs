@@ -1,15 +1,14 @@
-import React, { Fragment, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import Heading from "../../components/styles/Headings";
-import Message from "../../components/styles/Message";
 import Button from "../../components/Form/Button";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Input from "../../components/Form/Input";
-import { MessageWrapper, Page } from "../../components/styles";
+import { Page } from "../../components/styles";
 import { Link, withRouter } from "react-router-dom";
 
 const SignUpSchema = Yup.object().shape({

@@ -1,5 +1,4 @@
 import React from "react";
-import { Fragment } from "react";
 import Intro from "../components/Intro/Intro";
 import IntroCard from "../components/IntroCard/IntroCard";
 import {connect} from 'react-redux';

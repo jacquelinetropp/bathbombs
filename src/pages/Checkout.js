@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import CheckoutItem from "../components/CheckoutItem/CheckoutItem";
-import { cartItemTotal } from "../store/cart/cartUtils";
 import StripeButton from "../components/StripeButton/StripeButton";
 import { ButtonLink } from "../components/styles";
 

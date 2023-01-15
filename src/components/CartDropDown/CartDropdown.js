@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import CartItem from "../CartItem/CartItem";
 import { ButtonLink } from "../styles";

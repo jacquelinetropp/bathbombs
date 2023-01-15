@@ -1,16 +1,9 @@
 import React, { Fragment, useState } from "react";
-import { connect } from "react-redux";
 import styled from "styled-components";
 import logo from "../../images/logo .png";
 import { ButtonLink, StyledLink } from "../styles";
 import Hamburger from "./hamburger";
-import { JaggedLine, Logo } from "./navbar.styles";
-import LineImage from '../../images/jaggedline.png';
-
-const NavbarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
+import { Logo } from "./navbar.styles";
 
 const NavbarDiv = styled.div`
   display: flex;
@@ -81,10 +74,6 @@ const MobileNav = ({ user }) => {
   );
 };
 
-const mapStateToProps = ({ firebase }) => ({
-  user: firebase.auth.uid,
-});
 
-const mapDispatchToProps = {};
 
-export default connect()(MobileNav);
+export default MobileNav;

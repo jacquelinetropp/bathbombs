@@ -55,9 +55,6 @@ const ItemCard = ({ item, addItem}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-    
-})
 
 const mapDispatchToProps = (dispatch) => ({
     addItem: (item) => dispatch(actions.addItem(item)),
